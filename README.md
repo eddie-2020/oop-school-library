@@ -7,6 +7,7 @@ Here in this project I have created a class `Person` with the following:
 - Private method `is_of_age?` that returns `true` if `@age` is greater or equal to 18 and false otherwise.
 
 ![](./assets/schoolLibrary.PNG)
+![](./assets//DecoratorClass.PNG)
 
 ## Project requirements
 The project requirements can be found [here](https://github.com/microverseinc/curriculum-ruby/blob/main/oop/school_library_people.md)
@@ -19,7 +20,7 @@ Testing tool: [Rubocup](https://rubocop.org/)
 
 ## Installation
 - Git clone `https://github.com/oluyaratosin123/OOP-School-Library.git`
-- `cd OOP-School-Library`
+- run `cd OOP-School-Library` in your command line
 
 ## Authors
 
