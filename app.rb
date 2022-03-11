@@ -28,7 +28,7 @@ class App
     display_menu
   end
 
-  def list_all_books
+  def list_all_books(1)
     if @books.length.zero?
       puts "\nThere are no books in the library. You can create a book from the main menu."
     else
@@ -39,7 +39,7 @@ class App
     end
   end
 
-  def list_all_people
+  def list_all_people(2)
     if @persons.length.zero?
       puts 'There are no registered persons. You can create a person from the main menu.'
     else
@@ -55,7 +55,7 @@ class App
     end
   end
 
-  def create_a_person
+  def create_a_person(3)
     print 'Do you want to create a student [1] or a teacher [2]? [Input number]: '
     person = gets.chomp.to_i
     case person
@@ -101,7 +101,7 @@ class App
     Teacher.new(teacher_name, teacher_age, specialization)
   end
 
-  def create_a_book
+  def create_a_book(4)
     puts "\nCreate a new book"
     print "\nEnter book's title: "
     title = gets.chomp
@@ -111,33 +111,35 @@ class App
     puts "Book #{title} created successfully.\n"
   end
 
-  def create_a_rental
+  def create_a_rental(5)
     puts 'Create a rental'
   end
 
-  def list_all_rentals
+  def list_all_rentals(6)
     puts 'list all rentals'
   end
 
   def process_input(choice)
-    case choice
-    when 1
-      list_all_books
-    when 2
-      list_all_people
-    when 3
-      create_a_person
-    when 4
-      create_a_book
-    when 5
-      create_a_rental
-    when 6
-      list_all_rentals
-    when 7
+    @process_input = case choice
+
+    when :1
+      list_all_books(choice)
+    when :2
+      list_all_people(choice)
+    when :3
+      create_a_person(choice)
+    when :4
+      create_a_book(choice)
+    when :5
+      create_a_rental(choice)
+    when :6
+      list_all_rentals(choice)
+    when :7
       puts "\nThank you for using School Library App. Goodbye!"
       exit
     else
       puts "\nPlease, enter a valid number between 1 and 7.\n"
     end
   end
+
 end
