@@ -124,16 +124,28 @@ class App
 
     when 1
       list_all_books
+  end
+  def process_input(choice) 
     when 2
       list_all_people
+  end
+  def process_input(choice) 
     when 3
       create_a_person
+  end
+  def process_input(choice) 
     when 4
       create_a_book
+  end
+  def process_input(choice)
     when 5
       create_a_rental
+  end
+  def process_input(choice) 
     when 6
       list_all_rentals
+  end
+  def process_input(choice)
     when 7
       puts "\nThank you for using School Library App. Goodbye!"
       exit
