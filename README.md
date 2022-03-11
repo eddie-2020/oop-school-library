@@ -8,6 +8,9 @@ Here in this project I have created a class `Person` with the following:
 
 ![](./assets/schoolLibrary.PNG)
 ![](./assets//DecoratorClass.PNG)
+![](./assets/entery1.PNG)
+![](./assets/entery2.PNG)
+![](./assets/entery3.PNG)
 
 ## Project requirements
 The project requirements can be found [here](https://github.com/microverseinc/curriculum-ruby/blob/main/oop/school_library_people.md)
