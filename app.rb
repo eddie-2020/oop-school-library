@@ -29,7 +29,7 @@ class App
   end
 
   def list_all_books
-    if @books.length == 0
+    if @books.length.zero?
       puts "\nThere are no books in the library. You can create a book from the main menu."
     else
       puts "\nHere are all the books in the library:"
@@ -40,7 +40,7 @@ class App
   end
 
   def list_all_people
-    if @persons.length == 0
+    if @persons.length.zero?
       puts 'There are no registered persons. You can create a person from the main menu.'
     else
       puts "\nList of all the persons:"
@@ -48,7 +48,8 @@ class App
         if person.is_a?(Student)
           puts "#{index + 1}. [Student] Name: #{person.name}, age: #{person.age}, with ID: #{person.id}"
         else
-          puts "#{index + 1}. [Teacher] Name: #{person.name}, age: #{person.age}, with ID: #{person.id} and specialization: #{person.specialization}"
+          puts "#{index + 1}. [Teacher] Name: #{person.name}, age: #{person.age}, with ID: #{person.id}
+          and specialization: #{person.specialization}"
         end
       end
     end
@@ -120,12 +121,18 @@ class App
 
   def process_input(choice)
     case choice
-    when 1 then list_all_books
-    when 2 then list_all_people
-    when 3 then create_a_person
-    when 4 then create_a_book
-    when 5 then create_a_rental
-    when 6 then list_all_rentals
+    when 1
+      list_all_books
+    when 2
+      list_all_people
+    when 3
+      create_a_person
+    when 4
+      create_a_book
+    when 5
+      create_a_rental
+    when 6
+      list_all_rentals
     when 7
       puts "\nThank you for using School Library App. Goodbye!"
       exit
