@@ -18,7 +18,7 @@ The project requirements can be found [here](https://github.com/microverseinc/cu
 ## Built with
 Programming language: `Ruby`
 Frameworks: `NaN`
-Technology: `NaN`
+Technology: `N/A`
 Testing tool: [Rubocup](https://rubocop.org/)
 
 ## Installation
