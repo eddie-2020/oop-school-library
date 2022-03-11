@@ -1,9 +1,12 @@
+require './books'
+
 class Rental
   attr_accessor :date, :book, :person
 
   def initialize(date, book, person)
+    super()
     @date = date
-    @book = book
     @person = person
-  end
+    @book = []
+  end 
 end
