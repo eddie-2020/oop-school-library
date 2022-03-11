@@ -121,32 +121,19 @@ class App
 
   def process_input(choice)
     case choice
-
-    when 1
-      list_all_books
-  end
-  def process_input(choice) 
-    when 2
-      list_all_people
-  end
-  def process_input(choice) 
-    when 3
-      create_a_person
-  end
-  def process_input(choice) 
-    when 4
-      create_a_book
-  end
-  def process_input(choice)
-    when 5
-      create_a_rental
-  end
-  def process_input(choice) 
-    when 6
-      list_all_rentals
-  end
-  def process_input(choice)
-    when 7
+    when 1 
+      then list_all_books
+    when 2 
+      then list_all_people
+    when 3 
+      then create_a_person
+    when 4 
+      then create_a_book
+    when 5 
+      then create_a_rental
+    when 6 
+      then list_all_rentals
+    when 7 then
       puts "\nThank you for using School Library App. Goodbye!"
       exit
     else
