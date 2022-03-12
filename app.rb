@@ -162,7 +162,6 @@ class App # rubocop:disable Metrics/ClassLength
     end
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
   def process_input(choice)
     case choice
     when 1 then list_all_books
