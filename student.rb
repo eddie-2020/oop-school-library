@@ -1,17 +1,35 @@
-require './person'
+require_relative 'nameable'
+require_relative 'decorator'
+require_relative 'rental'
 
-class Student < Person
-  attr_reader :classroom
+class Person < Nameable
+  attr_accessor :name, :age
+  attr_reader :id, :rentals
 
-  def initialize(age, name, parent_permission: true)
-    super(name, age, parent_permission: parent_permission)
+  def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
+    @id = Random.rand(1..1000)
+    @name = name
+    @age = age
+    @parent_permission = parent_permission
+    @rentals = []
   end
 
-  def owner=(classroom)
-    classroom.students.push(self) unless classroom.students.include?(self)
+  def can_use_services?
+    is_of_age? || @parent_permission
   end
 
-  def play_hooky(_hooky)
-    @hooky = "¯\(ツ)/¯"
+  def correct_name
+    @name
+  end
+
+  def add_rental(book, date)
+    Rental.new(date, self, book)
+  end
+
+  private
+
+  def of_age?
+    @age >= 18
   end
 end
