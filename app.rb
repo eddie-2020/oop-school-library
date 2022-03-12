@@ -1,14 +1,12 @@
-require './person'
-require './student'
-require './teacher'
-require './books'
-require './rentals'
+require_relative 'student'
+require_relative 'teacher'
+require_relative 'book'
+require_relative 'rental'
 
-class App
+class App # rubocop:disable Metrics/ClassLength
   def run
-    @person = []
-    @book = []
-    @rentals = []
+    @persons = []
+    @books = []
     puts "\nWelcome to the School Library App!"
     display_menu
   end
@@ -22,7 +20,6 @@ class App
     puts '5 - Create a rental'
     puts '6 - List all rentals for a given person id'
     puts "7 - Exit\n"
-    puts
     print '[Your choice?]: '
     choice = gets.chomp.to_i
     process_input(choice)
@@ -30,27 +27,28 @@ class App
   end
 
   def list_all_books
-    if @book.length.zero?
+    if @books.length.zero?
       puts "\nThere are no books in the library. You can create a book from the main menu."
     else
       puts "\nHere are all the books in the library:"
-      @book.each_with_index do |book, index|
+      @books.each_with_index do |book, index|
         puts "#{index + 1}. Book's title: #{book.title}, Book's author: #{book.author}"
       end
     end
   end
 
   def list_all_people
-    if @person.length.zero?
-      puts 'There are no registered persons. You can create a person from the main menu.'
+    if @persons.empty?
+      puts "\nThere are no registered persons. You can create a person from the main menu."
     else
       puts "\nList of all the persons:"
-      @person.each_with_index do |person, index|
+      @persons.each_with_index do |person, index|
         if person.is_a?(Student)
           puts "#{index + 1}. [Student] Name: #{person.name}, age: #{person.age}, with ID: #{person.id}"
         else
-          puts "#{index + 1}. [Teacher] Name: #{person.name}, age: #{person.age}, with ID: #{person.id}
-          and specialization: #{person.specialization}"
+          # rubocop:disable Layout/LineLength
+          puts "#{index + 1}. [Teacher] Name: #{person.name}, age: #{person.age}, with ID: #{person.id} and specialization: #{person.specialization}"
+          # rubocop:enable Layout/LineLength
         end
       end
     end
@@ -61,10 +59,10 @@ class App
     person = gets.chomp.to_i
     case person
     when 1
-      @person.push(create_student)
+      @persons.push(create_student)
       puts "\nThe student created successfully."
     when 2
-      @person.push(create_teacher)
+      @persons.push(create_teacher)
       puts "\nThe teacher created successfully."
     else
       puts 'Please, select Student [1] or Teacher [2] only!'
@@ -77,7 +75,7 @@ class App
     print 'Enter age: '
     student_age = gets.chomp.to_i
     print 'Enter name: '
-    student_name = gets.chomp.to_s
+    student_name = gets.chomp
     print 'Has parrent permition? Enter [Y/N]: '
     parent_permission = gets.chomp
     case parent_permission
@@ -108,44 +106,63 @@ class App
     title = gets.chomp
     print "Enter book's author: "
     author = gets.chomp
-    @book.push(Book.new(title, author))
+    @books.push(Book.new(title, author))
     puts "Book #{title} created successfully.\n"
   end
 
   def create_a_rental
-    puts 'Select a book from the following list by number'
-    @book.each_with_index { |book, index| puts "#{index + 1}) Title: #{book.title}, Author: #{book.author}" }
-
-    book_id = gets.chomp.to_i
-
-    puts 'Select a person from the following list by number (not id)'
-    @person.each_with_index do |person, index|
-      puts "#{index + 1}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    puts "\nCreate a new rental"
+    if @books.empty?
+      puts "\nThere are no books in the library. You can create a book from the main menu."
+      display_menu
+    else
+      list_all_books
+      print "\nSelect which book you want to rent by entering its number: "
+      book_number = gets.chomp.to_i
     end
+    if @persons.length.zero?
+      puts "\nThere are no registered persons. You can create a person from the main menu."
+    else
+      list_all_people
+      print "\nSelect a person from the list by its number (not id!): "
+      person_number = gets.chomp.to_i
+    end
+    print 'Enter date in the following format [YYYY/MM/DD]: '
+    date = gets.chomp
+    Rental.new(date, @persons[person_number - 1], @books[book_number - 1])
+    puts 'Rental created successfully.'
+  end
 
-    person_id = gets.chomp.to_i
-
-    print 'Date: '
-    date = gets.chomp.to_s
-
-    rental = Rental.new(date, @book[book_id], @person[person_id])
-    @rentals << rental
-
-    puts 'Rental was created successfully'
-    sleep 0.75
+  def choosen_person(person_id)
+    @persons.each do |person|
+      return person if person.id == person_id
+    end
+    false
   end
 
   def list_all_rentals
-    print 'ID of person: '
-    id = gets.chomp.to_i
-
-    puts 'Rentals:'
-    @rentals.each do |rental|
-      puts "Date: #{rental.date}, Book '#{book.title}' by #{book.author}" if rental.person == id
+    list_all_people
+    print "\nWhich person's rentals you want to see? Please, enter the person's ID: "
+    person_id = gets.chomp.to_i
+    person = choosen_person(person_id)
+    if person
+      rentals = person.rentals
+      if rentals.length.zero?
+        puts "\nThere are no rentals for this person's ID."
+      else
+        puts "\nList of all rentals: "
+        rentals.each_with_index do |book_rented, index|
+          # rubocop:disable Layout/LineLength
+          puts "#{index + 1}. Book \'#{book_rented.book.title}\' was rented on #{book_rented.date} by #{book_rented.person.name}."
+          # rubocop:enable Layout/LineLength
+        end
+      end
+    else
+      puts "\nThere is no person with this ID #{person_id}. Please, select the correct ID."
     end
-    sleep 0.75
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def process_input(choice)
     case choice
     when 1 then list_all_books
