@@ -131,7 +131,7 @@ class App
     rental = Rental.new(date, @book[book_id], @person[person_id])
     @rentals << rental
 
-    puts "Rental was created successfully"
+    puts 'Rental was created successfully'
     sleep 0.75
   end
 
@@ -140,7 +140,7 @@ class App
     id = gets.chomp.to_i
 
     puts 'Rentals:'
-    @rentals.each_with_index do |rental|
+    @rentals.each do |rental|
       puts "Date: #{rental.date}, Book '#{book.title}' by #{book.author}" if rental.person == id
     end
     sleep 0.75
