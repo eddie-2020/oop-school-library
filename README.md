@@ -13,7 +13,7 @@ To get a local copy up and running follow these simple example steps.
 ## Prerequisites
 * A text editor(preferably Visual Studio Code)
 
-## Install
+## Installation
 * Ruby
 
 ## Using it Locally
@@ -45,6 +45,12 @@ OR
 
 `ruby person.rb`, `ruby student.rb`, `ruby teacher.rb`
 
+## Clone School Library App
+
+>**Step 1** Clone this repository by doing the following: `https://github.com/oluyaratosin123/OOP-School-Library.git`
+>**Step 2** `cd OOP-School-Library` in your local terminal
+>**Step 3** Run `ruby main.rb` to start the app
+>**Step 4** You can start creating `books`, `person` and `rentals`
 
 
 ## 👤 Author 
