@@ -6,7 +6,6 @@ require_relative 'rental'
 require_relative 'student'
 require_relative 'teacher'
 
-
 module Create
   include Assist
 
@@ -19,7 +18,7 @@ module Create
       puts 'Student created successfully'
       puts
     when 2
-      @person.push(create_teacher)    
+      @person.push(create_teacher)
       puts 'Teacher created successfully'
       puts
     else
@@ -58,7 +57,7 @@ module Create
     book_title = gets.chomp
     print 'Enter book author: '
     book_author = gets.chomp
-    
+
     @books.push(Book.new(book_title, book_author))
     # binding.pry
     puts 'Book created successfully'

@@ -10,7 +10,6 @@ class Helper
     @books = []
     @person = []
     @rentals = []
-
   end
 
   def leave
@@ -18,7 +17,6 @@ class Helper
     exit
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
   def compute_choice(choice)
     case choice
     when 1
@@ -34,10 +32,9 @@ class Helper
     when 6
       list_rentals
     when 7
-      @leave
+      leave
     else
       puts 'Please enter the options listed in the menu'
     end
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
 end

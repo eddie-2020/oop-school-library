@@ -5,6 +5,7 @@ class Main
   def initialize
     @helper = Helper.new
   end
+
   def run()
     puts 'Welcome to School Library App!'
     options
@@ -26,5 +27,5 @@ class Main
   end
 end
 
-the_main = Main.new()
+the_main = Main.new
 the_main.run

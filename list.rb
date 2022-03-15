@@ -1,14 +1,13 @@
 module List
-
   def list_people
     if @person.length.zero?
       puts 'Nobody added yet!'
     else
       @person.each_with_index do |pers, index|
         if pers.is_a?(Student)
-          puts "#{index}) [Student] Name: #{pers.name}, ID: #{pers.id}, Age: #{pers.age}"
+          puts "#{index + 1}) [Student] Name: #{pers.name}, ID: #{pers.id}, Age: #{pers.age}"
         else
-          puts "#{index}) [Teacher] Name: #{pers.name}, ID: #{pers.id}, Age: #{pers.age}"
+          puts "#{index + 1}) [Teacher] Name: #{pers.name}, ID: #{pers.id}, Age: #{pers.age}"
         end
       end
     end
@@ -20,7 +19,7 @@ module List
       puts 'No books added yet!'
     else
       @books.each_with_index do |book, index|
-        puts "#{index}) Title: #{book.title}, Author: #{book.author}"
+        puts "#{index + 1}) Title: #{book.title}, Author: #{book.author}"
       end
     end
     puts
@@ -46,5 +45,4 @@ module List
     end
     puts
   end
-  
 end

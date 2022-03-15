@@ -53,10 +53,7 @@ Charles Gobina :student:
 * Twitter:https://twitter.com/i4mCloud
 * LinkedIn:https://www.linkedin.com/in/charles-gobina-74a0ab193/
 
-Edward Yara
-
-
-
+Edward Yara 
 - GitHub: [@oluyaratosin123](https://github.com/oluyaratosin123)
 - Twitter: [@TOluyara](https://twitter.com/TOluyara)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/edward-oluyara/)
