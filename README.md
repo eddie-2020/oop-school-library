@@ -1,47 +1,82 @@
-# OOP-School-Library`
-Here in this project I have created a class `Person` with the following:
-- Instance vars: `@id`, `@name`, and `@age`.
-- Constructor with `name`, `age`, and `parent_permission` as parameter. name and `parent_permission` are optional and have default values of `"Unknown"` and `true`.
-- Getters for `@id`, `@name`, and `@age`.
-- Setters for `@name` and `@age`.
-- Private method `is_of_age?` that returns `true` if `@age` is greater or equal to 18 and false otherwise.
+# School Library
+In this project, I will be building your school library app. In this initial step, I will implement the classes to represent students parents and teachers.
 
-![](./assets/schoolLibrary.PNG)
-![](./assets//DecoratorClass.PNG)
-![](./assets/entery1.PNG)
-![](./assets/entery2.PNG)
-![](./assets/entery3.PNG)
 
-## Project requirements
-The project requirements can be found [here](https://github.com/microverseinc/curriculum-ruby/blob/main/oop/school_library_people.md)
+## Technologies Used
 
-## Built with
-Programming language: `Ruby`
-Frameworks: `NaN`
-Technology: `N/A`
-Testing tool: [Rubocup](https://rubocop.org/)
+* Language (Ruby)
+
+## Getting Started
+
+To get a local copy up and running follow these simple example steps.
+
+## Prerequisites
+* A text editor(preferably Visual Studio Code)
 
 ## Installation
-- Git clone `https://github.com/oluyaratosin123/OOP-School-Library.git`
-- run `cd OOP-School-Library` in your command line
+* Ruby
 
-## Authors
+## Using it Locally
 
-👤 **Author1**
+* Clone the project
 
+* Clone the repo using the command below
+
+```
+git clone git@github.com:charlesgobina/school-library.git
+```
+
+* Navigate to the directory in which you cloned the project and use the command below
+
+```
+cd school-library
+```
+
+* Start the program using the command below
+```bash
+open terminal
+run the command $irb (interactive ruby shell)
+run the program functions
+```
+
+OR 
+
+* In the program directory, run the command below to execute individaual files
+
+`ruby person.rb`, `ruby student.rb`, `ruby teacher.rb`
+
+## Clone School Library App
+
+>**Step 1** Clone this repository by doing the following: `https://github.com/oluyaratosin123/OOP-School-Library.git`
+
+>**Step 2** `cd OOP-School-Library` in your local terminal
+
+>**Step 3** Run `ruby main.rb` to start the app
+
+>**Step 4** You can start creating `books`, `person` and `rentals`
+
+
+## 👤 Author 
+Charles Gobina :student: 
+* Github:https://github.com/charlesgobina 
+* Twitter:https://twitter.com/i4mCloud
+* LinkedIn:https://www.linkedin.com/in/charles-gobina-74a0ab193/
+
+Edward Yara 
 - GitHub: [@oluyaratosin123](https://github.com/oluyaratosin123)
 - Twitter: [@TOluyara](https://twitter.com/TOluyara)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/edward-oluyara/)
 
-## 🤝 Contributing
-
+## Contributing :handshake:
 Contributions, issues, and feature requests are welcome!
 
-
 ## Show your support
+Give a 	:star: if you like this project.
 
-Give a ⭐️ if you like this project!
+## Acknowledgments
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
 
-## 📝 License
-
-This project is [MIT](./MIT.md) licensed.
+## License :memo:
+This project is [MIT](https://github.com/microverseinc/readme-template/blob/master/MIT.md) licensed
