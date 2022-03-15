@@ -46,11 +46,20 @@ OR
 `ruby person.rb`, `ruby student.rb`, `ruby teacher.rb`
 
 
-## Authors
+
+## 👤 Author 
 Charles Gobina :student: 
 * Github:https://github.com/charlesgobina 
 * Twitter:https://twitter.com/i4mCloud
 * LinkedIn:https://www.linkedin.com/in/charles-gobina-74a0ab193/
+
+Edward Yara
+
+
+
+- GitHub: [@oluyaratosin123](https://github.com/oluyaratosin123)
+- Twitter: [@TOluyara](https://twitter.com/TOluyara)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/edward-oluyara/)
 
 ## Contributing :handshake:
 Contributions, issues, and feature requests are welcome!
