@@ -48,8 +48,11 @@ OR
 ## Clone School Library App
 
 >**Step 1** Clone this repository by doing the following: `https://github.com/oluyaratosin123/OOP-School-Library.git`
+
 >**Step 2** `cd OOP-School-Library` in your local terminal
+
 >**Step 3** Run `ruby main.rb` to start the app
+
 >**Step 4** You can start creating `books`, `person` and `rentals`
 
 
