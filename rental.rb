@@ -1,27 +1,11 @@
 class Rental
-  attr_reader :book, :person
-  attr_accessor :date
+  attr_accessor :date, :person, :book
 
-  def initialize(book, person, date)
+  def initialize(date, person, book)
     @date = date
-    @book = book
-    @book.rental << self
     @person = person
-    @person.rental << self
-  end
-
-  def stud_classroom=(classroom)
-    @classroom = classroom
-    classroom.student.push(self) unless classroom.student.include?(self)
-  end
-
-  def book_rented=(book)
+    person.rentals << self
     @book = book
-    book.rental.push(self) unless book.rental.include?(self)
-  end
-
-  def rented_by=(person)
-    @person = person
-    person.rental.push(self) unless person.rental.include?(self)
+    # book.rentals << self
   end
 end

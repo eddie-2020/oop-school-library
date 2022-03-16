@@ -1,14 +1,10 @@
-require './rental'
+require_relative 'nameable'
+require_relative 'decorator'
+require_relative 'rental'
 
-class Namable
-  def correct_name
-    raise NotImplementedError
-  end
-end
-
-class Person < Namable
-  attr_reader :id, :rental
-  attr_accessor :name, :age
+class Person < Nameable
+  attr_accessor :name, :age, :id
+  attr_reader :rentals, :parent_permission
 
   def initialize(age, name = 'Unknown', parent_permission: true)
     super()
@@ -16,53 +12,24 @@ class Person < Namable
     @name = name
     @age = age
     @parent_permission = parent_permission
-    @rental = []
+    @rentals = []
   end
 
   def can_use_services?
-    if is_of_age? || @parent_permission
-      true
-    else
-      false
-    end
+    is_of_age? || @parent_permission
   end
 
   def correct_name
     @name
   end
 
+  def add_rental(book, date)
+    Rental.new(date, self, book)
+  end
+
   private
 
   def of_age?
-    age >= 18
-  end
-
-  def add_rental(person, date)
-    Rental.new(date, person, self)
-  end
-end
-
-class BaseDecorator < Namable
-  attr_accessor :namable
-
-  def initialize(namable)
-    super()
-    @namable = namable
-  end
-
-  def correct_name
-    @namable.correct_name
-  end
-end
-
-class CapitalizeDecorator < BaseDecorator
-  def correct_name
-    @namable.correct_name.upcase
-  end
-end
-
-class TrimmerDecorator < BaseDecorator
-  def correct_name
-    @namable.correct_name.slice(0, 10) unless @namable.correct_name.length <= 10
+    @age >= 18
   end
 end
