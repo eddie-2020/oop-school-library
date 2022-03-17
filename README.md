@@ -19,7 +19,7 @@ To get a local copy up and running follow these simple example steps.
 ## Prerequisites
 * A text editor(preferably Visual Studio Code)
 
-## Install
+## Installation
 * Ruby
 * JSON gem
 * Rspec gem
@@ -50,8 +50,6 @@ ruby main.rb
 ```
 git clone git@github.com:oluyaratosin123/OOP-School-Library.git
 ```
-
-* Navigate to the directory in which you cloned the project and use the command below
 
 ```
 cd OOP-School-Library
