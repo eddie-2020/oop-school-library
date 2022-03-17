@@ -37,4 +37,22 @@ class RetrieveData
       end
     end
   end
+
+  def retrieve_rentals
+    json = File.read('rentals.json')
+    if json.empty?
+      []
+    else
+      parsed_json = JSON.parse(json)
+      parsed_json.map do |rental|
+        person = if rental['person']['type'] == 'Student'
+                   Student.new(rental['person']['age'], rental['person']['name'])
+                 else
+                   Teacher.new(rental['person']['age'], rental['person']['name'], rental['person']['specialization'])
+                 end
+        person.id = rental['person']['id']
+        Rental.new(rental['date'], person, Book.new(rental['book']['title'], rental['book']['author']))
+      end
+    end
+  end
 end
