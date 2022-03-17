@@ -1,6 +1,12 @@
 # School Library
-In this project, I will be building your school library app. In this initial step, I will implement the classes to represent students parents and teachers.
+In this project, We will be building your school library app. In this initial step, We will implement the classes to represent students parents and teachers. Users can
 
+* Add books to the library
+* Add persons (Student and Teacher)
+* See list of all the books
+* See list of all persons
+* Rent a book to either a student or a teacher
+* See a list of everyone who have rented a book using their Ids
 
 ## Technologies Used
 
@@ -15,46 +21,44 @@ To get a local copy up and running follow these simple example steps.
 
 ## Installation
 * Ruby
+* JSON gem
+* Rspec gem
 
 ## Using it Locally
-
-* Clone the project
 
 * Clone the repo using the command below
 
 ```
-git clone git@github.com:charlesgobina/school-library.git
+git clone git@github.com:oluyaratosin123/OOP-School-Library.git
 ```
 
 * Navigate to the directory in which you cloned the project and use the command below
 
 ```
-cd school-library
+cd OOP-School-Library
 ```
 
 * Start the program using the command below
-```bash
-open terminal
-run the command $irb (interactive ruby shell)
-run the program functions
+```
+ruby main.rb
 ```
 
-OR 
+## Testing
 
-* In the program directory, run the command below to execute individaual files
+* Clone the repo using the command below
 
-`ruby person.rb`, `ruby student.rb`, `ruby teacher.rb`
+```
+git clone git@github.com:oluyaratosin123/OOP-School-Library.git
+```
 
-## Clone School Library App
+```
+cd OOP-School-Library
+```
 
->**Step 1** Clone this repository by doing the following: `https://github.com/oluyaratosin123/OOP-School-Library.git`
-
->**Step 2** `cd OOP-School-Library` in your local terminal
-
->**Step 3** Run `ruby main.rb` to start the app
-
->**Step 4** You can start creating `books`, `person` and `rentals`
-
+* Start rspec using the command below
+```
+rspec spec ./spec
+```
 
 ## 👤 Author 
 Charles Gobina :student: 
@@ -62,7 +66,7 @@ Charles Gobina :student:
 * Twitter:https://twitter.com/i4mCloud
 * LinkedIn:https://www.linkedin.com/in/charles-gobina-74a0ab193/
 
-Edward Yara 
+Edward Yara :student: 
 - GitHub: [@oluyaratosin123](https://github.com/oluyaratosin123)
 - Twitter: [@TOluyara](https://twitter.com/TOluyara)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/edward-oluyara/)
