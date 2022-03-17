@@ -7,6 +7,7 @@ class Main
     @retrieve_data = RetrieveData.new(@persons, @books, @rentals)
     @persons = @retrieve_data.retrieve_persons
     @books = @retrieve_data.retrieve_books
+    @rentals = @retrieve_data.retrieve_rentals
   end
 
   def start
