@@ -1,87 +1,103 @@
-require_relative 'assist'
 require_relative 'book'
-require_relative 'person'
-require_relative 'classroom'
-require_relative 'rental'
 require_relative 'student'
 require_relative 'teacher'
+require_relative 'helper'
+require_relative 'rental'
+require_relative 'list'
 
-module Create
-  include Assist
+class CreateBooks
+  def initialize(books)
+    @books = books
+  end
 
-  def create_person
-    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
-    choice = gets.chomp.to_i
-    case choice
+  def create
+    puts "\nCreate a new book"
+    print "\nEnter book's title: "
+    title = gets.chomp
+    print "Enter book's author: "
+    author = gets.chomp
+    @books.push(Book.new(title, author))
+    puts "Book #{title} created successfully.\n"
+  end
+end
+
+class CreatePerson
+  def initialize(persons)
+    @persons = persons
+  end
+
+  include Helpers
+
+  def create
+    print 'Do you want to create a student [1] or a teacher [2]? [Input number]: '
+    person = gets.chomp.to_i
+    case person
     when 1
-      @person.push(create_student)
-      puts 'Student created successfully'
-      puts
+      @persons.push(create_student)
+      puts "\nThe student created successfully."
     when 2
-      @person.push(create_teacher)
-      puts 'Teacher created successfully'
-      puts
+      @persons.push(create_teacher)
+      puts "\nThe teacher created successfully."
     else
-      puts 'Please enter either [1] or [2]'
-      create_person
+      puts 'Please, select Student [1] or Teacher [2] only!'
+      create
     end
   end
 
   def create_student
-    student = namage
-    print 'Enter student classroom: '
-    classroom = gets.chomp
-    print 'Is student permitted by parent? [Y] for yes [N] for no: '
-    permitted = gets.chomp
-    case permitted
+    puts "\nCreate a new student"
+    student = name_and_age
+    print 'Has parent permition? Enter [Y/N]: '
+    parent_permission = gets.chomp
+    case parent_permission
     when 'y'
-      Student.new(student[:age], student[:name], classroom, parent_permission: true)
+      Student.new(student[:age], student[:name])
     when 'n'
-      Student.new(student[:age], student[:name], classroom, parent_permission: false)
+      Student.new(student[:age], student[:name], parent_permission: false)
     else
-      puts 'Please enter either [Y] or [N] try filling again'
+      puts 'Please, select [y] or [n]: '
       create_student
     end
   end
 
   def create_teacher
-    teacher = namage
-    print 'Enter teacher specialisation: '
-    teacher_spec = gets.chomp
-    puts
-    Teacher.new(teacher[:age], teacher_spec, teacher[:name])
+    puts "\nCreate a new teacher"
+    teacher = name_and_age
+    print 'Enter specialization: '
+    specialization = gets.chomp
+    Teacher.new(teacher[:age], teacher[:name], specialization)
+  end
+end
+
+class CreateRental
+  def initialize(rentals, books, persons)
+    @rentals = rentals
+    @books = books
+    @persons = persons
+    @list_books = ListBooks.new(books)
+    @list_persons = ListPersons.new(persons)
   end
 
-  def create_book
-    print 'Enter book title: '
-    book_title = gets.chomp
-    print 'Enter book author: '
-    book_author = gets.chomp
-
-    @books.push(Book.new(book_title, book_author))
-    # binding.pry
-    puts 'Book created successfully'
-    puts
-  end
-
-  def create_rental
-    if @books.length.zero? || @person.length.zero?
-      puts 'You need to create atleast a book and a person to proceed. You can do that from the menu'
+  def create
+    puts "\nCreate a new rental"
+    if @books.empty?
+      puts "\nThere are no books in the library. You can create a book from the main menu."
+      return
     else
-      puts 'Select a book from the following list by number'
-      list_books
-      print 'Enter choice: '
-      choice_book = gets.chomp.to_i
-      puts 'Select a person from the following list by number(not id)'
-      list_people
-      puts
-      print 'Enter choice: '
-      choice_person = gets.chomp.to_i
-      print 'Enter date [YYYY/MM/DD]: '
-      choice_date = gets.chomp
-      @rentals.push(Rental.new(@books[choice_book], @person[choice_person], choice_date))
-      puts 'Rental created successfully'
+      @list_books.display
+      print "\nSelect which book you want to rent by entering its number: "
+      book_number = gets.chomp.to_i
     end
-    puts
+    if @persons.length.zero?
+      puts "\nThere are no registered persons. You can create a person from the main menu."
+    else
+      @list_persons.display
+      print "\nSelect a person from the list by its number (not id!): "
+      person_number = gets.chomp.to_i
+    end
+    print 'Enter date in the following format [YYYY/MM/DD]: '
+    date = gets.chomp
+    @rentals.push(Rental.new(date, @persons[person_number - 1], @books[book_number - 1]))
+    puts 'Rental created successfully.'
   end
 end
