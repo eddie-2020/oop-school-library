@@ -20,7 +20,13 @@ class SaveData
     end
     books_json = JSON.generate(books_obj)
 
+    rentals_obj = @rentals.map do |rental|
+      { date: rental.date, person: create_person_obj(rental.person), book: create_book_obj(rental.book) }
+    end
+    rentals_json = JSON.generate(rentals_obj)
+
     save_file('persons.json', persons_json)
     save_file('books.json', books_json)
+    save_file('rentals.json', rentals_json)
   end
 end
